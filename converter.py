@@ -1,12 +1,44 @@
-#DECLARATIONS
-base = 8
-nbase = 16
-number = "137357"
+"""
+Change one base to another.
 
-# [A -> 10], [B -> 11], so on and so forth
-def letter_to_number(number):
+Parameters
+----------
+base   : int
+    starting base
+nbase  : int
+    base to convert to
+number : str
+    number to convert
+
+Returns
+-------
+str
+    Returns converted number.
+"""
+
+#DECLARATIONS
+BASE = 8
+NBASE = 16
+NUMBER = "137357"
+
+
+def letter_to_number(num):
+    """
+    Change letters to the number associated with them.
+
+    Parameters
+    ----------
+    num : str
+        Number with letters to convert.
+    
+    Returns
+    -------
+    finished_list : list
+        Returns list with each digit converted.
+    """
+
     number_list = []
-    for digit in number.lower():
+    for digit in num.lower():
         number_list.append(digit)
     finished_list = []
     for digit in number_list:
@@ -68,6 +100,20 @@ def letter_to_number(number):
     return finished_list
 
 def number_to_letter(number_list):
+    """
+    Change letters to the number associated with them.
+
+    Parameters
+    ----------
+    number_list : list
+        List with numbers to convert to their associated letters.
+    
+    Returns
+    -------
+    finished_string : str
+        String with letters if associated.
+    """
+
     finished_list = []
     for digit in number_list:
         match digit:
@@ -129,8 +175,24 @@ def number_to_letter(number_list):
     return finished_string
 
 
-def number_to_decimal(number, base):
-    str_digit_list = letter_to_number(number)
+def number_to_decimal(num, base_converted_from):
+    """
+    Change a number in one base to decimal.
+
+    Parameters
+    ----------
+    num : str
+        Number to convert to decimal.
+    base_converted_from : int
+        Base of num to convert from.
+    
+    Returns
+    -------
+    int
+        Returns converted number in decimal.
+    """
+
+    str_digit_list = letter_to_number(num)
     digit_list = []
     for digit in str_digit_list:
         digit_list.append(int(digit))
@@ -138,26 +200,61 @@ def number_to_decimal(number, base):
     decimal = 0
     incrementer = 0
     for digit in place_digit_list:
-        decimal += digit * base ** incrementer
+        decimal += digit * base_converted_from ** incrementer
         incrementer += 1
     return decimal
 
-def decimal_to_base(number, nbase):
-    number = int(number)
-    if nbase == 10:
-        return number
+def decimal_to_base(num, new_base):
+    """
+    Change a number in decimal to another base.
+
+    Parameters
+    ----------
+    num : int
+        Number to convert to the new base.
+    new_base : int
+        Base to convert the number to.
+    
+    Returns
+    -------
+    int
+        Returns converted number in the new base.
+    """
+    
+    num = int(num)
+    if new_base == 10:
+        return num
     reversed_nbase_digits = []
-    while number > 0:
-        remainder = number % nbase
-        number = number // nbase
+    while num > 0:
+        remainder = num % new_base
+        num = num // new_base
         reversed_nbase_digits.append(remainder)
     nbase_digits = reversed_nbase_digits[::-1]
     return number_to_letter(nbase_digits)
 
 
-def main(number, base, nbase):
-    ntd = number_to_decimal(number, base)
-    dtb = decimal_to_base(ntd, nbase)
+def main(num, base_converted_from, new_base):
+    """
+    Change a number in one base to another base.
+
+    Parameters
+    ----------
+    num : str
+        Number to convert to the new base.
+    base_converted_from : int
+        Base of num to convert from.
+    new_base : int
+        Base to convert the number to.
+    
+    Returns
+    -------
+    int
+        Returns converted number in the new base.
+    """
+
+    ntd = number_to_decimal(num, base_converted_from)
+    dtb = decimal_to_base(ntd, new_base)
     return dtb
 
-print(main(number, base, nbase))
+
+print(main(NUMBER, BASE, NBASE))
