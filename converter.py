@@ -53,32 +53,6 @@ def letter_to_number(num):
     """
 
     ltn_dict = {
-    "A": "10",
-    "B": "11",
-    "C": "12",
-    "D": "13",
-    "E": "14",
-    "F": "15",
-    "G": "16",
-    "H": "17",
-    "I": "18",
-    "J": "19",
-    "K": "20",
-    "L": "21",
-    "M": "22",
-    "N": "23",
-    "O": "24",
-    "P": "25",
-    "Q": "26",
-    "R": "27",
-    "S": "28",
-    "T": "29",
-    "U": "30",
-    "V": "31",
-    "W": "32",
-    "X": "33",
-    "Y": "34",
-    "Z": "35",
     "0": "0",
     "1": "1",
     "2": "2",
@@ -88,7 +62,59 @@ def letter_to_number(num):
     "6": "6",
     "7": "7",
     "8": "8",
-    "9": "9"
+    "9": "9",
+    "a": "10",
+    "b": "11",
+    "c": "12",
+    "d": "13",
+    "e": "14",
+    "f": "15",
+    "g": "16",
+    "h": "17",
+    "i": "18",
+    "j": "19",
+    "k": "20",
+    "l": "21",
+    "m": "22",
+    "n": "23",
+    "o": "24",
+    "p": "25",
+    "q": "26",
+    "r": "27",
+    "s": "28",
+    "t": "29",
+    "u": "30",
+    "v": "31",
+    "w": "32",
+    "x": "33",
+    "y": "34",
+    "z": "35",
+    "A": "36",
+    "B": "37",
+    "C": "38",
+    "D": "39",
+    "E": "40",
+    "F": "41",
+    "G": "42",
+    "H": "43",
+    "I": "44",
+    "J": "45",
+    "K": "46",
+    "L": "47",
+    "M": "48",
+    "N": "49",
+    "O": "50",
+    "P": "51",
+    "Q": "52",
+    "R": "53",
+    "S": "54",
+    "T": "55",
+    "U": "56",
+    "V": "57",
+    "W": "58",
+    "X": "59",
+    "Y": "60",
+    "Z": "61"
     }
     number_list = []
     for digit in num.upper():
@@ -114,32 +140,6 @@ def number_to_letter(number_list):
     """
 
     ntl_dict = {
-        10: "A",
-        11: "B",
-        12: "C",
-        13: "D",
-        14: "E",
-        15: "F",
-        16: "G",
-        17: "H",
-        18: "I",
-        19: "J",
-        20: "K",
-        21: "L",
-        22: "M",
-        23: "N",
-        24: "O",
-        25: "P",
-        26: "Q",
-        27: "R",
-        28: "S",
-        29: "T",
-        30: "U",
-        31: "V",
-        32: "W",
-        33: "X",
-        34: "Y",
-        35: "Z",
         0: "0",
         1: "1",
         2: "2",
@@ -149,7 +149,59 @@ def number_to_letter(number_list):
         6: "6",
         7: "7",
         8: "8",
-        9: "9"
+        9: "9",
+        10: "a",
+        11: "b",
+        12: "c",
+        13: "d",
+        14: "e",
+        15: "f",
+        16: "g",
+        17: "h",
+        18: "i",
+        19: "j",
+        20: "k",
+        21: "l",
+        22: "m",
+        23: "n",
+        24: "o",
+        25: "p",
+        26: "q",
+        27: "r",
+        28: "s",
+        29: "t",
+        30: "u",
+        31: "v",
+        32: "w",
+        33: "x",
+        34: "y",
+        35: "z",
+        36: "A",
+        37: "B",
+        38: "C",
+        39: "D",
+        40: "E",
+        41: "F",
+        42: "G",
+        43: "H",
+        44: "I",
+        45: "J",
+        46: "K",
+        47: "L",
+        48: "M",
+        49: "N",
+        50: "O",
+        51: "P",
+        52: "Q",
+        53: "R",
+        54: "S",
+        55: "T",
+        56: "U",
+        57: "V",
+        58: "W",
+        59: "X",
+        60: "Y",
+        61: "Z",
     }
     finished_list = []
     for digit in number_list:
@@ -246,21 +298,25 @@ while True:
         print("Base must be an integer. Try again.")
     elif BASE < 2:
         print("New base is less than two. Try again.")
-    elif BASE > 36:
+    elif BASE > 62:
         print("New base is greater than thirty-six. Try again.")
     else:
         break
 
 while True:
     NBASE = int(input("Input base to convert to: "))
-    if not isinstance(NBASE, int) or NBASE > 36:
+    if not isinstance(NBASE, int):
         print("New base must be an integer. Try again.")
     elif NBASE < 2:
         print("New base is less than two. Try again.")
-    elif NBASE > 36:
+    elif NBASE > 62:
         print("New base is greater than thirty-six. Try again.")
     else:
         break
+
+print()
+print("Lowercase letters range from 10 to 35. Uppercase letters range from 36 to 61.")
+print()
 
 while True:
     NUMBER = input("Input number to convert: ")
