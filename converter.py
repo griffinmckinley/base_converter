@@ -203,7 +203,7 @@ def decimal_to_base(num, new_base):
     int
         Returns converted number in the new base.
     """
-    
+
     num = int(num)
     if new_base == 10:
         return num
