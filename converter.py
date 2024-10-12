@@ -35,6 +35,10 @@ def digits_lower_than_base(num_unsanitized, base_to_check):
         Returns True if the number is valid in the given base, False otherwise.
     """
     num_unsanitized = letter_to_number(num_unsanitized)
+
+    if base_to_check == 1:
+        return all(int(num) == 1 for num in num_unsanitized)
+
     return all(int(num) < base_to_check for num in num_unsanitized)
 
 def letter_to_number(num):
@@ -259,6 +263,12 @@ def decimal_to_base(num, new_base):
     num = int(num)
     if new_base == 10:
         return num
+    if new_base == 1:
+        unary_list = []
+        while num > 0:
+            unary_list.append("1")
+            num -= 1
+        return int("".join(unary_list))
     reversed_nbase_digits = []
     while num > 0:
         remainder = num % new_base
@@ -296,7 +306,7 @@ while True:
     BASE = int(input("Input base to be converted from: "))
     if not isinstance(BASE, int):
         print("Base must be an integer. Try again.")
-    elif BASE < 2:
+    elif BASE < 1:
         print("New base is less than two. Try again.")
     elif BASE > 62:
         print("New base is greater than thirty-six. Try again.")
@@ -307,7 +317,7 @@ while True:
     NBASE = int(input("Input base to convert to: "))
     if not isinstance(NBASE, int):
         print("New base must be an integer. Try again.")
-    elif NBASE < 2:
+    elif NBASE < 1:
         print("New base is less than two. Try again.")
     elif NBASE > 62:
         print("New base is greater than thirty-six. Try again.")
