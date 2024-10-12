@@ -16,11 +16,26 @@ str
     Returns converted number.
 """
 
-#DECLARATIONS
-BASE = 8
-NBASE = 16
-NUMBER = "137357"
 
+
+def digits_lower_than_base(num_unsanitized, base_to_check):
+    """
+    Check if the given number is valid in the given base.
+
+    Parameters
+    ----------
+    num_unsanitized : str
+        Number to check.
+    base_to_check : int
+        Base to check the number against.
+
+    Returns
+    -------
+    bool
+        Returns True if the number is valid in the given base, False otherwise.
+    """
+    num_unsanitized = letter_to_number(num_unsanitized)
+    return all(int(num) < base_to_check for num in num_unsanitized)
 
 def letter_to_number(num):
     """
@@ -256,5 +271,34 @@ def main(num, base_converted_from, new_base):
     dtb = decimal_to_base(ntd, new_base)
     return dtb
 
+#DECLARATIONS
+while True:
+    BASE = int(input("Input base to be converted from: "))
+    if not isinstance(BASE, int):
+        print("Base must be an integer. Try again.")
+    elif BASE < 2:
+        print("New base is less than two. Try again.")
+    elif BASE > 36:
+        print("New base is greater than thirty-six. Try again.")
+    else:
+        break
+
+while True:
+    NBASE = int(input("Input base to convert to: "))
+    if not isinstance(NBASE, int) or NBASE > 36:
+        print("New base must be an integer. Try again.")
+    elif NBASE < 2:
+        print("New base is less than two. Try again.")
+    elif NBASE > 36:
+        print("New base is greater than thirty-six. Try again.")
+    else:
+        break
+
+while True:
+    NUMBER = input("Input number to convert: ")
+    if not digits_lower_than_base(NUMBER, BASE):
+        print("A digit is higher than the base the number is. Try again.")
+    else:
+        break
 
 print(main(NUMBER, BASE, NBASE))
